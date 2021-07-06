@@ -1,0 +1,40 @@
+/* 
+
+@keyframes product-image-transform {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+:root {
+
+  --btn-primary-text : ;
+  --btn-primary-accent_1 : ;
+  --btn-primary-accent_2 : ;
+
+  --btn-seconday-text : ;
+  --btn-seconday-accent_1 : ;
+  --btn-seconday-accent_2 : ;
+
+  --nav-bg-color : ;
+  --nav-primary-color: ;
+  --nav-alt-color: ;
+
+  --container-bg-color: ;
+  --container-primary-color: ;
+  --container-secondary-color: ;
+  --container-border-color: ;
+  --container-link-color: ;
+  --container-link-alt-color: ;
+  
+} */
+
+
+ .main-container{
+  padding: 24px;
+  min-height: 90vh;
+  background-color: #4DA8DA !important;
+}
