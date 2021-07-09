@@ -1,12 +1,25 @@
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware   } from 'redux';
 import productReducer from './product/reducer';
 
+import createSagaMiddleware from 'redux-saga';
+
+import { composeWithDevTools } from 'redux-devtools-extension'
+import rootSaga from './rootsaga';
+import loadProducts from './product/saga'
+
+const sagaMiddleware = createSagaMiddleware();
+
+const middlewareEnhancer = composeWithDevTools(
+  applyMiddleware(sagaMiddleware)
+)
 
 const ProductStore = createStore(
-  productReducer, /* preloadedState, */
-   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  productReducer,
+  middlewareEnhancer
 );
+
+sagaMiddleware.run(loadProducts);
 
 export {
   ProductStore

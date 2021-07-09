@@ -9,7 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 export default function Header({ anchorEl, clickHandler, handleClose }) {
 
   return (
-      <AppBar position="static" className="flex-grow1">
+      <AppBar position="static">
         <Toolbar>
           <IconButton
             edge="start"
@@ -18,11 +18,9 @@ export default function Header({ anchorEl, clickHandler, handleClose }) {
           >
             <MenuIcon />
           </IconButton>
-         
-          <Typography variant="h6" className="flex-grow1">
+          <Typography variant="h6">
             Market Place
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
   );

@@ -3,30 +3,33 @@ import { connect } from "react-redux";
 
 import { Grid } from "@material-ui/core";
 
-import { getAllProducts } from 'store/product/action'
-import ProductCard from "../components/Product/ProductCard";
+import { getAllProducts } from 'Store/product/actions'
+import ProductCard from "../Containers/Product/ProductCard";
+import Loader from 'Components/Loader'
 
-
-function ProductList({ history, products = [], getProducts }) {
+function ProductList({ history, products = [], getProducts, loadingProducts }) {
 
   useEffect(() => {
     getProducts()
 
     return () => {
     }
-
   }, [getProducts])
 
-  const showDetails = (_id) => {
-    history.push(`/product/${_id}`);
+  const showDetails = (id) => {
+    history.push(`/product/${id}`);
   };
+
+  if(loadingProducts){
+    return <Loader />
+  }
 
   return (
     <Grid
       className="wrapper"
     >
       {products.map((product) => (
-          <ProductCard key={product._id}  {...product} showDetails={showDetails} />
+          <ProductCard key={product.id}  {...product} showDetails={showDetails} />
       ))}
     </Grid>
   );
@@ -34,13 +37,14 @@ function ProductList({ history, products = [], getProducts }) {
 
 const mapStateToProps = state => {
   return {
+    loadingProducts: state.loadingProducts,
     products: state.products
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProducts : () => dispatch(getAllProducts)
+    getProducts : () => dispatch(getAllProducts())
   }
 }
 

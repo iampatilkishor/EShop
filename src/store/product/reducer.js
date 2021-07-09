@@ -1,32 +1,39 @@
-import { products } from "../../store/products";
 import {
     GET_ALL_PRODUCTS,
-    GET_PRODUCT
-} from './constant'
+    GET_PRODUCT,
+    PRODUCTS_LOADED
+} from '../Constants'
 
 const initialState = {
     products: [],
     selectedProduct: null,
-    currency: '$'
+    currency: '$',
+    loadingProducts: false
 }
 
 const productReducer = (state = initialState, action) => {
-    const newState = {...state};
     switch (action.type) {
         case GET_ALL_PRODUCTS:
             return {
-                ...newState,
-                products
+                ...state,
+                loadingProducts: true
+            }
+
+        case PRODUCTS_LOADED:
+            return {
+                ...state,
+                loadingProducts: false,
+                products: action.prductList
             }
 
         case GET_PRODUCT : 
         return {
-            ...newState,
-            selectedProduct: newState.products.find( product => product._id === action.productId)
+            ...state,
+            selectedProduct: state.products.find( product => product.id === +action.productId)
         }
 
         default:
-            return newState;
+            return state;
 
     }
 

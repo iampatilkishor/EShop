@@ -1,2 +1,3 @@
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
 export const GET_PRODUCT = 'GET_DETAILS';
+export const PRODUCTS_LOADED = 'PRODUCTS_LOADED';

@@ -1,7 +1,7 @@
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
-import ProductList from "./productListing";
-import ProductDetails from "components/Product/ProductDetails";
+import ProductList from "./ProductListing";
+import ProductDetails from "Containers/Product/ProductDetails";
 
 export default function Routes() {
   return (
